@@ -1,12 +1,14 @@
 export const BOARD_SIZE = 8;
 export const SQUARE_SIZE = 50;
 
-export const PIECE_COLORS = {
-  WHITE: "WHITE",
-  BLACK: "BLACK",
+export const COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+export const PieceColor = {
+  WHITE: "white",
+  BLACK: "black",
 };
 
-export const COLORS = {
-  [PIECE_COLORS.WHITE]: "#f0d9b5",
-  [PIECE_COLORS.BLACK]: "#b58863",
+export const Color = {
+  [PieceColor.WHITE]: "#f0d9b5",
+  [PieceColor.BLACK]: "#b58863",
 };

@@ -1,4 +1,4 @@
-import { BOARD_SIZE, COLORS, PIECE_COLORS } from "../constants/index.js";
+import { BOARD_SIZE, Color, COLUMNS, PieceColor } from "../constants/index.js";
 import { organizePieces } from "./organizePieces.js";
 
 export const buildChessboard = () => {
@@ -12,19 +12,16 @@ export const buildChessboard = () => {
   boardMatrix.forEach((row, rowIndex) => {
     row.forEach((_, columnIndex) => {
       const square = document.createElement("div");
-      square.classList.add("square");
 
       const isWhiteSquare = (rowIndex + columnIndex) % 2 === 0;
       const squareColor = isWhiteSquare
-        ? COLORS[PIECE_COLORS.WHITE]
-        : COLORS[PIECE_COLORS.BLACK];
+        ? Color[PieceColor.WHITE]
+        : Color[PieceColor.BLACK];
 
-      // placeholder
-      if (rowIndex === 7 && columnIndex === 0) {
-        square.id = "A1";
-      }
-
+      square.classList.add("square");
       square.style.backgroundColor = squareColor;
+      square.id = COLUMNS[columnIndex].concat(BOARD_SIZE - rowIndex);
+
       chessboard.appendChild(square);
     });
   });

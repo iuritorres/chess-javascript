@@ -12,6 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
+  user-select: none;
 }
 
 #chessboard {
@@ -30,7 +31,22 @@ body {
   align-items: center;
 }
 
-.chess-piece {
-  width: 72px;
-  height: 72px;
+.piece {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: rgba(94, 157, 176, 0.5);
+}
+
+.can-move-to {
+  border: solid 4px #8477b1;
+  cursor: pointer;
+}
+
+.dragging {
+  background-color: transparent;
+  opacity: 1;
 }
