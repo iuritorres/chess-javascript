@@ -11,16 +11,31 @@ export const buildChessboard = () => {
 
   boardMatrix.forEach((row, rowIndex) => {
     row.forEach((_, columnIndex) => {
-      const square = document.createElement("div");
-
       const isWhiteSquare = (rowIndex + columnIndex) % 2 === 0;
       const squareColor = isWhiteSquare
         ? Color[PieceColor.WHITE]
         : Color[PieceColor.BLACK];
 
+      const square = document.createElement("div");
+      square.id = COLUMNS[columnIndex].concat(BOARD_SIZE - rowIndex);
       square.classList.add("square");
       square.style.backgroundColor = squareColor;
-      square.id = COLUMNS[columnIndex].concat(BOARD_SIZE - rowIndex);
+
+      if (columnIndex === 0) {
+        const squareIndexer = document.createElement("span");
+        squareIndexer.innerText = BOARD_SIZE - rowIndex;
+        squareIndexer.classList.add("line-indexer");
+
+        square.appendChild(squareIndexer);
+      }
+
+      if (rowIndex === 7) {
+        const squareIndexer = document.createElement("span");
+        squareIndexer.innerText = COLUMNS[columnIndex].toLocaleLowerCase();
+        squareIndexer.classList.add("column-indexer");
+
+        square.appendChild(squareIndexer);
+      }
 
       chessboard.appendChild(square);
     });

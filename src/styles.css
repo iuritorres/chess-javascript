@@ -29,6 +29,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  font-size: 14px;
+  font-family: Helvetica, sans-serif;
+  color: #262626;
+}
+
+.square > .line-indexer {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+
+.square > .column-indexer {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
 }
 
 .piece {
