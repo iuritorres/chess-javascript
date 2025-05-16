@@ -8,4 +8,6 @@ export class King extends ChessPiece {
   move() {}
 
   canMove() {}
+
+  getMoveOptions() {}
 }

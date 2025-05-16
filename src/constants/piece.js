@@ -25,7 +25,7 @@ export const InitialPiecesPositions = {
     },
     {
       Class: Rook,
-      squares: ["A1", "H1"],
+      squares: ["A1"],
     },
   ],
   [PieceColor.WHITE]: [
@@ -39,11 +39,11 @@ export const InitialPiecesPositions = {
     },
     {
       Class: Knight,
-      squares: ["B8", "G8"],
+      squares: ["B8"],
     },
     {
       Class: Pawn,
-      squares: ["A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"],
+      squares: ["A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7", "D5"],
     },
     {
       Class: Queen,
@@ -51,7 +51,7 @@ export const InitialPiecesPositions = {
     },
     {
       Class: Rook,
-      squares: ["A8", "H8"],
+      squares: ["A8", "H8", "G5"],
     },
   ],
 };

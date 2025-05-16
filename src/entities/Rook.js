@@ -1,3 +1,4 @@
+import { getStraightMoveOptions } from "../functions/getStraightMoveOptions.js";
 import { ChessPiece } from "./ChessPiece.js";
 
 export class Rook extends ChessPiece {
@@ -8,4 +9,9 @@ export class Rook extends ChessPiece {
   move() {}
 
   canMove() {}
+
+  getMoveOptions({ currentSquare }) {
+    const canMoveTo = getStraightMoveOptions({ currentSquare });
+    return canMoveTo;
+  }
 }

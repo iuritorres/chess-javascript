@@ -10,7 +10,7 @@ export class Pawn extends ChessPiece {
 
   canMove() {}
 
-  showMoveOptions({ currentSquare }) {
+  getMoveOptions({ currentSquare }) {
     const squareColumn = currentSquare.id[0];
     const squareRow = Number(currentSquare.id[1]);
 
@@ -28,11 +28,6 @@ export class Pawn extends ChessPiece {
       );
     }
 
-    for (const squareId of canMoveTo) {
-      const square = document.getElementById(squareId);
-      square.classList.add("can-move-to");
-    }
-
-    return true;
+    return canMoveTo;
   }
 }

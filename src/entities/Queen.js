@@ -8,4 +8,6 @@ export class Queen extends ChessPiece {
   move() {}
 
   canMove() {}
+
+  getMoveOptions() {}
 }

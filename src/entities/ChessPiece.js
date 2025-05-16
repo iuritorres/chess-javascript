@@ -26,7 +26,6 @@ export class ChessPiece {
 
     piece.src = this.imageSrc;
     piece.draggable = true;
-    piece.setAttribute("data-piece-type", this.pieceName);
 
     piece.onclick = (event) => {
       const clickedPiece = event.currentTarget;
@@ -53,8 +52,12 @@ export class ChessPiece {
 
       clickedPiece.classList.add("selected");
 
-      // const clickedPieceType = clickedPiece.getAttribute("data-piece-type");
-      this.showMoveOptions({ currentSquare: square });
+      const moveOptions = this.getMoveOptions({ currentSquare: square });
+
+      for (const squareId of moveOptions) {
+        const square = document.getElementById(squareId);
+        square.classList.add("can-move-to");
+      }
     };
 
     this.setupDragListeners({ piece });
@@ -77,5 +80,5 @@ export class ChessPiece {
   }
 
   canMove() {}
-  showMoveOptions() {}
+  getMoveOptions() {}
 }
