@@ -19,7 +19,7 @@ export const getStraightMoveOptions = ({ currentSquare }) => {
     moveOptions.push(squareId);
   }
 
-  for (let line = currentRow - 1; line >= 0; line--) {
+  for (let line = currentRow - 1; line > 0; line--) {
     const squareId = currentColumn + line;
     const piece = getSquarePiece({ squareId });
 
