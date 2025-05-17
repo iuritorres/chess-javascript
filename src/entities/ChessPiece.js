@@ -22,47 +22,35 @@ export class ChessPiece {
     const square = document.getElementById(this.squareId);
 
     const piece = document.createElement("img");
+    piece.draggable = true;
+    piece.src = this.imageSrc;
     piece.classList.add("piece");
 
-    piece.src = this.imageSrc;
-    piece.draggable = true;
-
-    piece.onclick = (event) => {
-      const clickedPiece = event.currentTarget;
-      const allPieces = document.getElementsByClassName("piece");
-      const allSquares = document.getElementsByClassName("square");
-
-      if (clickedPiece.classList.contains("selected")) {
-        clickedPiece.classList.remove("selected");
-
-        for (const square of allSquares) {
-          if (square.classList.contains("can-move-to")) {
-            square.classList.remove("can-move-to");
-          }
-        }
-
-        return;
-      }
-
-      for (const piece of allPieces) {
-        if (piece.classList.contains("selected")) {
-          return;
-        }
-      }
-
-      clickedPiece.classList.add("selected");
-
-      const moveOptions = this.getMoveOptions({ currentSquare: square });
-
-      for (const squareId of moveOptions) {
-        const square = document.getElementById(squareId);
-        square.classList.add("can-move-to");
-      }
-    };
-
+    this.setupOnClick({ piece, square });
     this.setupDragListeners({ piece });
 
     square.appendChild(piece);
+  }
+
+  setupOnClick({ piece, square }) {
+    piece.onclick = (event) => {
+      const clickedPiece = event.currentTarget;
+      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
+        (squareId) => document.getElementById(squareId)
+      );
+
+      moveOptions.forEach((square) => square.classList.add("can-move-to"));
+
+      const isSelected = clickedPiece.classList.contains("selected");
+
+      if (!isSelected) {
+        clickedPiece.classList.add("selected");
+        return;
+      }
+
+      clickedPiece.classList.remove("selected");
+      moveOptions.forEach((square) => square.classList.remove("can-move-to"));
+    };
   }
 
   setupDragListeners({ piece }) {
