@@ -6,8 +6,8 @@ export class ChessPiece {
   hasMoved;
 
   constructor({ color, squareId }) {
-    const piecePrototype = Object.getPrototypeOf(this);
-    const pieceName = piecePrototype.constructor.name.toLowerCase();
+    const pieceName =
+      Object.getPrototypeOf(this).constructor.name.toLowerCase();
 
     this.color = color;
     this.squareId = squareId;
@@ -35,16 +35,24 @@ export class ChessPiece {
   setupOnClick({ piece, square }) {
     piece.onclick = (event) => {
       const clickedPiece = event.currentTarget;
+      const isSelected = clickedPiece.classList.contains("selected");
       const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
         (squareId) => document.getElementById(squareId)
       );
 
-      moveOptions.forEach((square) => square.classList.add("can-move-to"));
-
-      const isSelected = clickedPiece.classList.contains("selected");
-
       if (!isSelected) {
+        const allPieces = document.getElementsByClassName("piece");
+        const isSomePieceSelected = Array.from(allPieces).some((piece) =>
+          piece.classList.contains("selected")
+        );
+
+        if (isSomePieceSelected) {
+          return;
+        }
+
         clickedPiece.classList.add("selected");
+        moveOptions.forEach((square) => square.classList.add("can-move-to"));
+
         return;
       }
 
