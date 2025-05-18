@@ -28,7 +28,7 @@ export class ChessPiece {
     piece.setAttribute("color", this.color);
 
     this.setupOnClick({ piece, square });
-    this.setupDragListeners({ piece });
+    this.setupDragListeners({ piece, square });
 
     square.appendChild(piece);
   }
@@ -62,17 +62,28 @@ export class ChessPiece {
     };
   }
 
-  setupDragListeners({ piece }) {
+  setupDragListeners({ piece, square }) {
     piece.ondragstart = (event) => {
       const clickedPiece = event.currentTarget;
 
+      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
+        (squareId) => document.getElementById(squareId)
+      );
+
       clickedPiece.classList.add("dragging");
+      moveOptions.forEach((square) => square.classList.add("can-move-to"));
     };
 
     piece.ondragend = (event) => {
       const clickedPiece = event.currentTarget;
 
+      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
+        (squareId) => document.getElementById(squareId)
+      );
+
       clickedPiece.classList.remove("dragging");
+      clickedPiece.classList.remove("selected");
+      moveOptions.forEach((square) => square.classList.remove("can-move-to"));
     };
   }
 
