@@ -37,10 +37,9 @@ export class ChessPiece {
     piece.onclick = (event) => {
       const clickedPiece = event.currentTarget;
       const isSelected = clickedPiece.classList.contains("selected");
-      const moveOptions = this.getMoveOptions({
-        currentSquare: square,
-        color: this.color,
-      }).map((squareId) => document.getElementById(squareId));
+      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
+        (squareId) => document.getElementById(squareId)
+      );
 
       if (!isSelected) {
         const allPieces = document.getElementsByClassName("piece");

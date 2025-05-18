@@ -11,10 +11,16 @@ export class Queen extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions({ currentSquare, color }) {
+  getMoveOptions({ currentSquare }) {
     const canMoveTo = [
-      ...getStraightMoveOptions({ currentSquare, color }),
-      ...getDiagonalMoveOptions({ currentSquare, color }),
+      ...getStraightMoveOptions({
+        currentSquare,
+        color: this.color,
+      }),
+      ...getDiagonalMoveOptions({
+        currentSquare,
+        color: this.color,
+      }),
     ];
 
     return canMoveTo;
