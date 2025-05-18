@@ -10,8 +10,8 @@ export class Rook extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions({ currentSquare }) {
-    const canMoveTo = getStraightMoveOptions({ currentSquare });
+  getMoveOptions({ currentSquare, color }) {
+    const canMoveTo = getStraightMoveOptions({ currentSquare, color });
     return canMoveTo;
   }
 }

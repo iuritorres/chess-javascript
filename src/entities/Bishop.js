@@ -10,8 +10,12 @@ export class Bishop extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions({ currentSquare }) {
-    const canMoveTo = getDiagonalMoveOptions({ currentSquare });
+  getMoveOptions({ currentSquare, color }) {
+    const canMoveTo = getDiagonalMoveOptions({
+      currentSquare,
+      color,
+    });
+
     return canMoveTo;
   }
 }

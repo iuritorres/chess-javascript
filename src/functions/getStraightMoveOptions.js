@@ -1,7 +1,7 @@
 import { BOARD_SIZE, COLUMNS } from "../constants/index.js";
 import { getSquarePiece } from "./getSquarePiece.js";
 
-export const getStraightMoveOptions = ({ currentSquare }) => {
+export const getStraightMoveOptions = ({ currentSquare, color }) => {
   const currentColumn = currentSquare.id[0];
   const currentRow = Number(currentSquare.id[1]);
 
@@ -13,6 +13,10 @@ export const getStraightMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        moveOptions.push(squareId);
+      }
+
       break;
     }
 
@@ -24,6 +28,10 @@ export const getStraightMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        moveOptions.push(squareId);
+      }
+
       break;
     }
 
@@ -36,6 +44,10 @@ export const getStraightMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        moveOptions.push(squareId);
+      }
+
       break;
     }
 
@@ -51,6 +63,10 @@ export const getStraightMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        moveOptions.push(squareId);
+      }
+
       break;
     }
 

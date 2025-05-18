@@ -25,6 +25,7 @@ export class ChessPiece {
     piece.draggable = true;
     piece.src = this.imageSrc;
     piece.classList.add("piece");
+    piece.setAttribute("color", this.color);
 
     this.setupOnClick({ piece, square });
     this.setupDragListeners({ piece });
@@ -36,9 +37,10 @@ export class ChessPiece {
     piece.onclick = (event) => {
       const clickedPiece = event.currentTarget;
       const isSelected = clickedPiece.classList.contains("selected");
-      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
-        (squareId) => document.getElementById(squareId)
-      );
+      const moveOptions = this.getMoveOptions({
+        currentSquare: square,
+        color: this.color,
+      }).map((squareId) => document.getElementById(squareId));
 
       if (!isSelected) {
         const allPieces = document.getElementsByClassName("piece");
@@ -74,6 +76,8 @@ export class ChessPiece {
       clickedPiece.classList.remove("dragging");
     };
   }
+
+  getCaptureOptions() {}
 
   canMove() {}
   getMoveOptions() {}

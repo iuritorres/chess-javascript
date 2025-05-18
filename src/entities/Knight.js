@@ -9,5 +9,5 @@ export class Knight extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions({ currentSquare }) {}
+  getMoveOptions({ currentSquare, color }) {}
 }

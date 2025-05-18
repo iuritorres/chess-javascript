@@ -1,7 +1,7 @@
 import { BOARD_SIZE, COLUMNS } from "../constants/index.js";
 import { getSquarePiece } from "./getSquarePiece.js";
 
-export const getDiagonalMoveOptions = ({ currentSquare }) => {
+export const getDiagonalMoveOptions = ({ currentSquare, color }) => {
   const currentColumn = currentSquare.id[0];
   const currentRow = Number(currentSquare.id[1]);
 
@@ -39,6 +39,10 @@ export const getDiagonalMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        topLeftSquareIds.push(squareId);
+      }
+
       break;
     }
 
@@ -56,6 +60,10 @@ export const getDiagonalMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        topLeftSquareIds.push(squareId);
+      }
+
       break;
     }
 
@@ -82,6 +90,10 @@ export const getDiagonalMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        topLeftSquareIds.push(squareId);
+      }
+
       break;
     }
 
@@ -99,6 +111,10 @@ export const getDiagonalMoveOptions = ({ currentSquare }) => {
     const piece = getSquarePiece({ squareId });
 
     if (piece) {
+      if (color !== piece.getAttribute("color")) {
+        topLeftSquareIds.push(squareId);
+      }
+
       break;
     }
 

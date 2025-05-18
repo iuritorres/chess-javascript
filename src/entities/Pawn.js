@@ -10,7 +10,7 @@ export class Pawn extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions({ currentSquare }) {
+  getMoveOptions({ currentSquare, color }) {
     const squareColumn = currentSquare.id[0];
     const squareRow = Number(currentSquare.id[1]);
 
