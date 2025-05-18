@@ -8,4 +8,6 @@ export class Knight extends ChessPiece {
   move() {}
 
   canMove() {}
+
+  getMoveOptions({ currentSquare }) {}
 }

@@ -51,7 +51,7 @@ export const InitialPiecesPositions = {
     },
     {
       Class: Rook,
-      squares: ["A8", "H8", "D5"],
+      squares: ["A8", "H8"],
     },
   ],
 };

@@ -1,3 +1,4 @@
+import { getDiagonalMoveOptions } from "../functions/getDiagonalMoveOptions.js";
 import { ChessPiece } from "./ChessPiece.js";
 
 export class Bishop extends ChessPiece {
@@ -9,5 +10,8 @@ export class Bishop extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions() {}
+  getMoveOptions({ currentSquare }) {
+    const canMoveTo = getDiagonalMoveOptions({ currentSquare });
+    return canMoveTo;
+  }
 }

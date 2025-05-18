@@ -9,5 +9,5 @@ export class King extends ChessPiece {
 
   canMove() {}
 
-  getMoveOptions() {}
+  getMoveOptions({ currentSquare }) {}
 }
