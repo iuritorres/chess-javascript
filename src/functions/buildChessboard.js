@@ -1,5 +1,6 @@
 import { BOARD_SIZE, Color, COLUMNS, PieceColor } from "../constants/index.js";
 import { organizePieces } from "./organizePieces.js";
+import { setupSquareOnLickListener } from "./setupSquareOnLickListener.js";
 
 export const buildChessboard = () => {
   const chessboard = document.createElement("div");
@@ -37,6 +38,7 @@ export const buildChessboard = () => {
         square.appendChild(squareIndexer);
       }
 
+      setupSquareOnLickListener({ square });
       chessboard.appendChild(square);
     });
   });

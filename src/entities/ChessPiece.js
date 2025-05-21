@@ -27,19 +27,19 @@ export class ChessPiece {
     piece.classList.add("piece");
     piece.setAttribute("color", this.color);
 
-    this.setupOnClick({ piece, square });
+    this.setupOnClickListeners({ piece, square });
     this.setupDragListeners({ piece, square });
 
     square.appendChild(piece);
   }
 
-  setupOnClick({ piece, square }) {
+  setupOnClickListeners({ piece }) {
     piece.onclick = (event) => {
       const clickedPiece = event.currentTarget;
       const isSelected = clickedPiece.classList.contains("selected");
-      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
-        (squareId) => document.getElementById(squareId)
-      );
+      const moveOptions = this.getMoveOptions({
+        currentSquare: piece.parentElement,
+      }).map((squareId) => document.getElementById(squareId));
 
       if (!isSelected) {
         const allPieces = document.getElementsByClassName("piece");
@@ -63,6 +63,24 @@ export class ChessPiece {
   }
 
   setupDragListeners({ piece, square }) {
+    // piece.onmousedown = (event) => {
+    //   document.onmousemove = (event) => {
+    //     const mouseMovePiece = event.currentTarget;
+
+    //     // console.log("mouseMovePiece.style.top", mouseMovePiece.style.top);
+    //     // console.log()
+
+    //     mouseMovePiece.style.top = `${
+    //       (event.clientX - piece.getBoundingClientRect().x) / 2
+    //     }px`;
+    //     mouseMovePiece.style.left = `${
+    //       (event.clientY - piece.getBoundingClientRect().y) / 2
+    //     }px`;
+
+    //     return false;
+    //   };
+    // };
+
     piece.ondragstart = (event) => {
       const clickedPiece = event.currentTarget;
 
