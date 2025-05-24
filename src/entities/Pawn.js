@@ -19,6 +19,14 @@ export class Pawn extends ChessPiece {
     const direction = this.color === PieceColor.BLACK ? 1 : -1;
 
     const firstSquareId = squareColumn.concat(squareRow + 1 * direction);
+
+    const isValidSquareId = firstSquareId.length === 2 && isNaN(firstSquareId);
+    const isValidRow = firstSquareId[1] >= 1 && firstSquareId[1] <= 8;
+
+    if (!isValidSquareId || !isValidRow) {
+      return [];
+    }
+
     const firstSquarePiece = getSquarePiece({ squareId: firstSquareId });
 
     if (!firstSquarePiece) {

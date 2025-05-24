@@ -47,7 +47,10 @@ export class Knight extends ChessPiece {
 
     [...topSquares, ...bottomSquares, ...leftSquares, ...rightSquares].forEach(
       (squareId) => {
-        if (squareId.length !== 2) {
+        const isValidSquareId = squareId.length === 2 && isNaN(squareId);
+        const isValidRow = squareId[1] >= 1 && squareId[1] <= 8;
+
+        if (!isValidSquareId || !isValidRow) {
           return;
         }
 
