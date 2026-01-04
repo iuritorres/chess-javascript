@@ -1,4 +1,4 @@
-import { buildChessboard } from "./functions/buildChessboard.js";
+import { buildChessboard } from "./functions/buildChessboard";
 
 buildChessboard();
 

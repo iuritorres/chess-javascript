@@ -1,0 +1,13 @@
+.vscode/
+.idea/
+node_modules/
+dist/
+src/dist/
+.env
+.DS_Store
+npm-debug.log*
+.env
+.DS_Store
+npm-debug.log*
+.vscode/
+.idea/

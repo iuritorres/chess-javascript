@@ -1,6 +1,6 @@
-import { getDiagonalMoveOptions } from "../functions/getDiagonalMoveOptions.js";
-import { getStraightMoveOptions } from "../functions/getStraightMoveOptions.js";
-import { ChessPiece } from "./ChessPiece.js";
+import { getDiagonalMoveOptions } from "../functions/getDiagonalMoveOptions";
+import { getStraightMoveOptions } from "../functions/getStraightMoveOptions";
+import { ChessPiece } from "./ChessPiece";
 
 export class Queen extends ChessPiece {
   constructor({ color, squareId }) {

@@ -1,6 +1,7 @@
-import { COLUMNS, PIECE_COLOR } from "../constants/chessboard.js";
-import { getSquarePiece } from "../functions/getSquarePiece.js";
-import { ChessPiece } from "./ChessPiece.js";
+import { COLUMNS } from "../constants/chessboard";
+import { PieceColor } from "../enums/PieceColor";
+import { getSquarePiece } from "../functions/getSquarePiece";
+import { ChessPiece } from "./ChessPiece";
 
 export class Pawn extends ChessPiece {
   constructor({ color, squareId }) {
@@ -16,7 +17,7 @@ export class Pawn extends ChessPiece {
     const squareRow = Number(currentSquare.id[1]);
     const canMoveTo = [];
 
-    const direction = this.color === PIECE_COLOR.WHITE ? 1 : -1;
+    const direction = this.color === PieceColor.WHITE ? 1 : -1;
 
     const firstSquareId = squareColumn.concat(squareRow + 1 * direction);
 
@@ -47,7 +48,9 @@ export class Pawn extends ChessPiece {
     const rightColumn = COLUMNS[COLUMNS.indexOf(squareColumn) + 1];
 
     if (leftColumn) {
-      const topLeftSquareId = leftColumn.concat(squareRow + 1 * direction);
+      const topLeftSquareId = leftColumn.concat(
+        String(squareRow + 1 * direction)
+      );
       const piece = getSquarePiece({ squareId: topLeftSquareId });
 
       if (piece && this.color !== piece.getAttribute("color")) {
@@ -56,7 +59,9 @@ export class Pawn extends ChessPiece {
     }
 
     if (rightColumn) {
-      const topRightSquareId = rightColumn.concat(squareRow + 1 * direction);
+      const topRightSquareId = rightColumn.concat(
+        String(squareRow + 1 * direction)
+      );
       const piece = getSquarePiece({ squareId: topRightSquareId });
 
       if (piece && this.color !== piece.getAttribute("color")) {

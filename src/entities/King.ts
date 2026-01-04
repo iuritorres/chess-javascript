@@ -1,6 +1,6 @@
-import { BOARD_SIZE, COLUMNS } from "../constants/chessboard.js";
-import { getSquarePiece } from "../functions/getSquarePiece.js";
-import { ChessPiece } from "./ChessPiece.js";
+import { BOARD_SIZE, COLUMNS } from "../constants/chessboard";
+import { getSquarePiece } from "../functions/getSquarePiece";
+import { ChessPiece } from "./ChessPiece";
 
 export class King extends ChessPiece {
   constructor({ color, squareId }) {
@@ -17,15 +17,15 @@ export class King extends ChessPiece {
 
     const moveOptions = [];
 
-    const topRow = currentRow < BOARD_SIZE ? currentRow + 1 : "";
-    const bottomRow = currentRow > 1 ? currentRow - 1 : "";
+    const topRow = String(currentRow < BOARD_SIZE ? currentRow + 1 : "");
+    const bottomRow = String(currentRow > 1 ? currentRow - 1 : "");
     const leftColumn = COLUMNS[COLUMNS.indexOf(currentColumn) - 1] ?? "";
     const rightColumn = COLUMNS[COLUMNS.indexOf(currentColumn) + 1] ?? "";
 
     const topSquare = currentColumn.concat(topRow);
     const bottomSquare = currentColumn.concat(bottomRow);
-    const leftSquare = leftColumn.concat(currentRow);
-    const rightSquare = rightColumn.concat(currentRow);
+    const leftSquare = leftColumn.concat(String(currentRow));
+    const rightSquare = rightColumn.concat(String(currentRow));
 
     const topLeftSquare = leftColumn.concat(topRow);
     const topRightSquare = rightColumn.concat(topRow);

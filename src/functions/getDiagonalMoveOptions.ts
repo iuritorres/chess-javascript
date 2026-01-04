@@ -1,5 +1,5 @@
-import { BOARD_SIZE, COLUMNS } from "../constants/index.js";
-import { getSquarePiece } from "./getSquarePiece.js";
+import { BOARD_SIZE, COLUMNS } from "../constants";
+import { getSquarePiece } from "./getSquarePiece";
 
 export const getDiagonalMoveOptions = ({ currentSquare, color }) => {
   const currentColumn = currentSquare.id[0];

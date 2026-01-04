@@ -1,7 +1,7 @@
-import { getDiagonalMoveOptions } from "../functions/getDiagonalMoveOptions.js";
-import { ChessPiece } from "./ChessPiece.js";
+import { getStraightMoveOptions } from "../functions/getStraightMoveOptions";
+import { ChessPiece } from "./ChessPiece";
 
-export class Bishop extends ChessPiece {
+export class Rook extends ChessPiece {
   constructor({ color, squareId }) {
     super({ color, squareId });
   }
@@ -11,7 +11,7 @@ export class Bishop extends ChessPiece {
   canMove() {}
 
   getMoveOptions({ currentSquare }) {
-    const canMoveTo = getDiagonalMoveOptions({
+    const canMoveTo = getStraightMoveOptions({
       currentSquare,
       color: this.color,
     });

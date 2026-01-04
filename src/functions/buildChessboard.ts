@@ -1,6 +1,7 @@
-import { BOARD_SIZE, Color, COLUMNS, PIECE_COLOR } from "../constants/index.js";
-import { setupPieces } from "./setupPieces.js";
-import { setupSquareOnClickListener } from "./setupSquareOnClickListener.js";
+import { BOARD_SIZE, COLOR, COLUMNS } from "../constants";
+import { PieceColor } from "../enums/PieceColor";
+import { setupPieces } from "./setupPieces";
+import { setupSquareOnClickListener } from "./setupSquareOnClickListener";
 
 export const buildChessboard = () => {
   const chessboard = document.createElement("div");
@@ -10,8 +11,8 @@ export const buildChessboard = () => {
     for (let columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
       const isWhiteSquare = (rowIndex + columnIndex) % 2 === 0;
       const squareColor = isWhiteSquare
-        ? Color[PIECE_COLOR.WHITE]
-        : Color[PIECE_COLOR.BLACK];
+        ? COLOR[PieceColor.WHITE]
+        : COLOR[PieceColor.BLACK];
 
       const square = document.createElement("div");
       square.id = COLUMNS[columnIndex] + (BOARD_SIZE - rowIndex);
@@ -20,7 +21,7 @@ export const buildChessboard = () => {
 
       if (columnIndex === 0) {
         const squareIndexer = document.createElement("span");
-        squareIndexer.innerText = BOARD_SIZE - rowIndex;
+        squareIndexer.innerText = (BOARD_SIZE - rowIndex).toString();
         squareIndexer.classList.add("line-indexer");
 
         square.appendChild(squareIndexer);

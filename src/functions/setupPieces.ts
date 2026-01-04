@@ -1,4 +1,4 @@
-import { INITIAL_PIECES_POSITIONS } from "../constants/index.js";
+import { INITIAL_PIECES_POSITIONS } from "../constants";
 
 export const setupPieces = () => {
   for (const { Piece, color, squares } of INITIAL_PIECES_POSITIONS) {

@@ -1,6 +1,6 @@
-import { BOARD_SIZE, COLUMNS } from "../constants/index.js";
-import { getSquarePiece } from "../functions/getSquarePiece.js";
-import { ChessPiece } from "./ChessPiece.js";
+import { BOARD_SIZE, COLUMNS } from "../constants";
+import { getSquarePiece } from "../functions/getSquarePiece";
+import { ChessPiece } from "./ChessPiece";
 
 export class Knight extends ChessPiece {
   constructor({ color, squareId }) {
@@ -26,29 +26,31 @@ export class Knight extends ChessPiece {
     const twoColumnsAfter = COLUMNS[COLUMNS.indexOf(currentColumn) + 2] ?? "";
 
     const topSquares = [
-      leftColumn.concat(currentRow + 2),
-      rightColumn.concat(currentRow + 2),
+      leftColumn.concat(String(currentRow + 2)),
+      rightColumn.concat(String(currentRow + 2)),
     ];
 
     const bottomSquares = [
-      leftColumn.concat(currentRow - 2),
-      rightColumn.concat(currentRow - 2),
+      leftColumn.concat(String(currentRow - 2)),
+      rightColumn.concat(String(currentRow - 2)),
     ];
 
     const leftSquares = [
-      twoColumnsBefore.concat(topRow),
-      twoColumnsBefore.concat(bottomRow),
+      twoColumnsBefore.concat(String(topRow)),
+      twoColumnsBefore.concat(String(bottomRow)),
     ];
 
     const rightSquares = [
-      twoColumnsAfter.concat(topRow),
-      twoColumnsAfter.concat(bottomRow),
+      twoColumnsAfter.concat(String(topRow)),
+      twoColumnsAfter.concat(String(bottomRow)),
     ];
 
     [...topSquares, ...bottomSquares, ...leftSquares, ...rightSquares].forEach(
       (squareId) => {
-        const isValidSquareId = squareId.length === 2 && isNaN(squareId);
-        const isValidRow = squareId[1] >= 1 && squareId[1] <= 8;
+        const isValidSquareId =
+          squareId.length === 2 && isNaN(Number(squareId));
+
+        const isValidRow = Number(squareId[1]) >= 1 && Number(squareId[1]) <= 8;
 
         if (!isValidSquareId || !isValidRow) {
           return;

@@ -1,4 +1,4 @@
-import { getSquarePiece } from "./getSquarePiece.js";
+import { getSquarePiece } from "./getSquarePiece";
 
 export const setupSquareOnClickListener = ({ square }) => {
   square.onclick = ({ currentTarget: clickedSquare }) => {
