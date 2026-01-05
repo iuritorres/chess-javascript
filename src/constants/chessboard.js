@@ -3,12 +3,12 @@ export const SQUARE_SIZE = 50;
 
 export const COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
-export const PieceColor = {
+export const PIECE_COLOR = {
   WHITE: "white",
   BLACK: "black",
 };
 
 export const Color = {
-  [PieceColor.WHITE]: "#f0d9b5",
-  [PieceColor.BLACK]: "#b58863",
+  [PIECE_COLOR.WHITE]: "#f0d9b5",
+  [PIECE_COLOR.BLACK]: "#b58863",
 };

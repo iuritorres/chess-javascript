@@ -34,8 +34,7 @@ export class ChessPiece {
   }
 
   setupOnClickListeners({ piece }) {
-    piece.onclick = (event) => {
-      const clickedPiece = event.currentTarget;
+    piece.onclick = ({ currentTarget: clickedPiece }) => {
       const isSelected = clickedPiece.classList.contains("selected");
       const moveOptions = this.getMoveOptions({
         currentSquare: piece.parentElement,
@@ -66,43 +65,34 @@ export class ChessPiece {
     // piece.onmousedown = (event) => {
     //   document.onmousemove = (event) => {
     //     const mouseMovePiece = event.currentTarget;
-
     //     // console.log("mouseMovePiece.style.top", mouseMovePiece.style.top);
     //     // console.log()
-
     //     mouseMovePiece.style.top = `${
     //       (event.clientX - piece.getBoundingClientRect().x) / 2
     //     }px`;
     //     mouseMovePiece.style.left = `${
     //       (event.clientY - piece.getBoundingClientRect().y) / 2
     //     }px`;
-
     //     return false;
     //   };
     // };
-
-    piece.ondragstart = (event) => {
-      const clickedPiece = event.currentTarget;
-
-      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
-        (squareId) => document.getElementById(squareId)
-      );
-
-      clickedPiece.classList.add("dragging");
-      moveOptions.forEach((square) => square.classList.add("can-move-to"));
-    };
-
-    piece.ondragend = (event) => {
-      const clickedPiece = event.currentTarget;
-
-      const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
-        (squareId) => document.getElementById(squareId)
-      );
-
-      clickedPiece.classList.remove("dragging");
-      clickedPiece.classList.remove("selected");
-      moveOptions.forEach((square) => square.classList.remove("can-move-to"));
-    };
+    // piece.ondragstart = (event) => {
+    //   const clickedPiece = event.currentTarget;
+    //   const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
+    //     (squareId) => document.getElementById(squareId)
+    //   );
+    //   clickedPiece.classList.add("dragging");
+    //   moveOptions.forEach((square) => square.classList.add("can-move-to"));
+    // };
+    // piece.ondragend = (event) => {
+    //   const clickedPiece = event.currentTarget;
+    //   const moveOptions = this.getMoveOptions({ currentSquare: square }).map(
+    //     (squareId) => document.getElementById(squareId)
+    //   );
+    //   clickedPiece.classList.remove("dragging");
+    //   clickedPiece.classList.remove("selected");
+    //   moveOptions.forEach((square) => square.classList.remove("can-move-to"));
+    // };
   }
 
   getCaptureOptions() {}

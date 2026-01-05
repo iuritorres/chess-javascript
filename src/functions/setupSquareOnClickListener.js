@@ -1,8 +1,7 @@
 import { getSquarePiece } from "./getSquarePiece.js";
 
-export const setupSquareOnLickListener = ({ square }) => {
-  square.onclick = (event) => {
-    const clickedSquare = event.currentTarget;
+export const setupSquareOnClickListener = ({ square }) => {
+  square.onclick = ({ currentTarget: clickedSquare }) => {
     const hasPiece = getSquarePiece({ squareId: clickedSquare.id });
     const canMoveTo = clickedSquare.classList.contains("can-move-to");
 

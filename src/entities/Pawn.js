@@ -1,4 +1,4 @@
-import { COLUMNS, PieceColor } from "../constants/chessboard.js";
+import { COLUMNS, PIECE_COLOR } from "../constants/chessboard.js";
 import { getSquarePiece } from "../functions/getSquarePiece.js";
 import { ChessPiece } from "./ChessPiece.js";
 
@@ -16,7 +16,7 @@ export class Pawn extends ChessPiece {
     const squareRow = Number(currentSquare.id[1]);
     const canMoveTo = [];
 
-    const direction = this.color === PieceColor.BLACK ? 1 : -1;
+    const direction = this.color === PIECE_COLOR.WHITE ? 1 : -1;
 
     const firstSquareId = squareColumn.concat(squareRow + 1 * direction);
 
@@ -35,7 +35,10 @@ export class Pawn extends ChessPiece {
       const secondSquareId = squareColumn.concat(squareRow + 2 * direction);
       const secondSquarePiece = getSquarePiece({ squareId: secondSquareId });
 
+      // bug
       if (!this.hasMoved && !secondSquarePiece) {
+        console.log({ hasMoved: this.hasMoved, secondSquarePiece });
+
         canMoveTo.push(secondSquareId);
       }
     }
